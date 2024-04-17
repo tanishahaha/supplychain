@@ -1,4 +1,4 @@
-import Image from "next/image";
+"use client"
 import React,{useState,useEffect,useContext} from 'react';
 import {
   Table,
