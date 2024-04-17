@@ -7,17 +7,17 @@ const Services=({
   setgetmodal,
   setstartmodal
 })=>{
-  const team=[
-    {
-      avatar:images.img1,
-    },
-    {
-      avatar:images.img1,
-    },
-    {
-      avatar:images.img1,
-    },
-  ];
+  // const team=[
+  //   {
+  //     avatar:images.img1,
+  //   },
+  //   {
+  //     avatar:images.img1,
+  //   },
+  //   {
+  //     avatar:images.img1,
+  //   },
+  // ];
 
   const openmodalbox=(text)=>{
     if(text==1){
