@@ -22,7 +22,7 @@ export const Trackingprovider=({children})=>{
 
     try{
       const web3modal=new Web3Modal();
-      const connection=await Web3Modal.connect();
+      const connection=await web3modal.connect();
       const provider=new ethers.providers.Web3Provider(connection);
       const signer=provider.getSigner();
       const contract=fetchcontract(signer);
@@ -56,22 +56,43 @@ export const Trackingprovider=({children})=>{
     }
   };
 
-  const getshipmentcount=async()=>{
-    try{
-      if(!window.ethereum) return "install metamask";
+  // const getshipmentcount=async()=>{
+  //   try{
+  //     if(!window.ethereum) return "install metamask";
 
-      const accounts=await window.ethereum.request({
-        method:"eth_accounts",
+  //     const accounts=await window.ethereum.request({
+  //       method:"eth_accounts",
+  //     });
+  //     const provider=new ethers.providers.JsonRpcProvider();
+  //     const contract=fetchcontract(provider);
+  //     const shipmentscount=await contract.getshipmentscount(accounts[0]);
+  //     return shipmentscount.toNumber();
+
+  //   }catch(err){
+  //     console.log("shipmentcount error",err);
+  //   }
+  // };
+  const getshipmentcount = async () => {
+    try {
+      // Request Ethereum accounts
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
       });
-      const provider=new ethers.providers.JsonRpcProvider();
-      const contract=fetchcontract(provider);
-      const shipmentscount=await contract.getshipmentcount(accounts[0]);
+  
+      if (accounts.length === 0) {
+        throw new Error("No Ethereum accounts available.");
+      }
+  
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const contract = fetchcontract(provider);
+      const shipmentscount = await contract.getshipmentscount(accounts[0]);
       return shipmentscount.toNumber();
-
-    }catch(err){
-      console.log("shipmentcount error",err);
+    } catch (err) {
+      console.log("shipmentcount error", err.message);
+      return 0; // Return a default value or handle the error as needed
     }
   };
+  
 
   const completeshipment=async(completeship)=>{
     console.log(completeship);
@@ -85,7 +106,7 @@ export const Trackingprovider=({children})=>{
       });
 
       const web3modal=new Web3Modal();
-      const connection=await Web3Modal.connect();
+      const connection=await web3modal.connect();
       const provider=new ethers.providers.Web3Provider(connection);
       const signer=provider.getSigner();
       const contract=fetchcontract(signer);
@@ -146,7 +167,7 @@ export const Trackingprovider=({children})=>{
       });
 
       const web3modal=new Web3Modal();
-      const connection=await Web3Modal.connect();
+      const connection=await web3modal.connect();
       const provider=new ethers.providers.Web3Provider(connection);
       const signer=provider.getSigner();
       const contract=fetchcontract(signer);
@@ -183,18 +204,45 @@ export const Trackingprovider=({children})=>{
     }
   };
 
-  const connectwallet=async()=>{
-    try{
-      if(!window.ethereum) return "install metamask";
+  // const connectwallet=async()=>{
+  //   try{
+  //     if(!window.ethereum) return "install metamask";
 
-      const accounts=await window.ethereum.request({
-        method:"eth_requestAccounts",
+  //     const accounts=await window.ethereum.request({
+  //       method:"eth_requestAccounts",
+  //     });
+  //     setcurruser(accounts[0]);
+  //   }catch(err){
+  //     console.log("nai horaha connect",err);
+  //   }
+  // }
+  const connectwallet = async () => {
+    try {
+      if (!window.ethereum) {
+        throw new Error("MetaMask is not installed.");
+      }
+  
+      // Open MetaMask popup only when the button is clicked
+      await window.ethereum.request({
+        method: "eth_requestAccounts",
       });
+  
+      const accounts = await window.ethereum.request({
+        method: "eth_accounts",
+      });
+  
+      if (accounts.length === 0) {
+        throw new Error("User rejected connecting the wallet.");
+      }
+  
       setcurruser(accounts[0]);
-    }catch(err){
-      console.log("nai horaha connect",err);
+    } catch (err) {
+      console.log("Error connecting wallet:", err.message);
+      // Provide feedback to the user or handle the error as needed
     }
-  }
+  };
+  
+  
 
   useEffect(()=>{
     checkifwalletconnected();
