@@ -1,4 +1,4 @@
-export default ({ setcreateshipmentmodel, allshipmentsdata }) => {
+export default ({ setcreateShipmentmodel, allshipmentsdata }) => {
   const converTime = (time) => {
     const newTime = new Date(time);
     const dataTime = new Intl.DateTimeFormat("en-US", {
@@ -22,7 +22,7 @@ export default ({ setcreateshipmentmodel, allshipmentsdata }) => {
         </div>
         <div className="mt-3 md:mt-0">
           <button
-            onClick={() => setcreateshipmentmodel(true)}
+            onClick={() => setcreateShipmentmodel(true)}
             href="javascript:void(0)"
             className="inline-block px-4 py-2 text-white duration-150 font-medium
           bg-gray-800 hover:bg-gray-700 active:bg-gray-900 md:text-sm rounded-lg

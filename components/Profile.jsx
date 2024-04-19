@@ -1,10 +1,10 @@
 "use client"
 import React,{useState,useEffect} from "react";
 
-const Profile=({openprofile,setopenprofile,curruser,getshipmentcount})=>{
+const Profile=({openprofile,setopenprofile,curruser,getShipmentsCount})=>{
   const [count,setcount]=useState();
   useEffect(()=>{
-    const getshipmentsdata=getshipmentcount();
+    const getshipmentsdata=getShipmentsCount();
 
     return async ()=>{
       const alldata=await getshipmentsdata;

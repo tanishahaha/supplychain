@@ -25,6 +25,8 @@ export default function Home() {
 
   useEffect(()=>{
     const getcampaignsdata=getAllShipment();
+    console.log(getcampaignsdata);
+    console.log("fjd")
 
     return async()=>{
       const alldata=await getcampaignsdata;

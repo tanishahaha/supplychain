@@ -1,15 +1,16 @@
 'use client'
 import { useState } from "react";
-export default ({ getmodal, setgetmodal, getshipment }) => {
+export default ({ getmodal, setgetmodal, getShipment }) => {
   const [index, setIndex] = useState(0);
   const [singleShipmentData, setSingleShipmentData] = useState();
 
-  const getshipmentData = async () => {
-    const getData = await getshipment(index);
+  const getShipmentData = async () => {
+    const getData = await getShipment(index);
     setSingleShipmentData(getData);
     console.log(getData);
   };
   console.log(singleShipmentData);
+  
   const converTime = (time) => {
     const newTime = new Date(time);
     const dataTime = new Intl.DateTimeFormat("en-US", {
@@ -49,7 +50,7 @@ outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                 />
               </div>
               <button
-                onClick={() => getshipmentData()}
+                onClick={() => getShipmentData()}
                 className="block w-full mt-3 py-3 px-4 font-medium text-sm text-center
 text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700
 rounded-lg ring-offset-2 ring-indigo-600 focus: ring-2">
