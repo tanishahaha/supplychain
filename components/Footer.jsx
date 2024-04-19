@@ -3,19 +3,19 @@ import React from "react";
 const Footer=()=>{
   const footnavs=[
     {
-      href:"javascript:void()",
+      href:"#",
       name:"Terms",
     },
     {
-      href:"javascript:void()",
+      href:"#",
       name:"License",
     },
     {
-      href:"javascript:void()",
+      href:"#",
       name:"Privacy",
     },
     {
-      href:"javascript:void()",
+      href:"#",
       name:"About us",
     },
   ]
@@ -42,8 +42,8 @@ const Footer=()=>{
           <div className="mt-6">
             <p className="text-gray-700 font-semibold">Get the app</p>
             <div className="flex items-center gap-3 mt-3 sm:block">
-              <a href="javascript:void()">icon</a>
-              <a href="javascript:void()">icon</a>
+              <a href="#">icon</a>
+              <a href="#">icon</a>
             </div>
           </div>
         </div>

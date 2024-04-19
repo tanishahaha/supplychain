@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import {Trackingprovider} from "../context/Tracking";
-import { Navbar,Footer } from "@/components";
+import {TrackingProvider} from "../context/Tracking";
+import { Navbar,Footer } from "@/components/index";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,12 +15,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
 
-        <Trackingprovider>
+        <TrackingProvider>
         <Navbar/>
         
         {children}
         <Footer/>
-        </Trackingprovider>
+        </TrackingProvider>
         </body>
     </html>
   );

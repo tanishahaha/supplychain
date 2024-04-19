@@ -9,14 +9,14 @@ import {
   Getshipment,
   Startshipment,
 } from "../components/index";
-import { Trackingcontext } from "@/context/Tracking";
+import { TrackingContext } from '@/context/Tracking';
 
 export default function Home() {
   const{
-    connectwallet,createshipment,getallshipments,completeshipment,getshipment,startshipment,getshipmentcount,curruser
-  }=useContext(Trackingcontext);
+    connectWallet,createShipment,getAllShipment,completeShipment,getShipment,startShipment,getShipmentsCount,currentUser
+  }=useContext(TrackingContext);
 
-  const [createshipmentmodel,setcreateshipmentmodel]=useState(false);
+  const [createShipmentmodel,setcreateShipmentmodel]=useState(false);
   const [openprofile,setopenprofile]=useState(false);
   const [startmodal,setstartmodal]=useState(false);
   const [completemodal,setcompletemodal]=useState(false);
@@ -24,7 +24,7 @@ export default function Home() {
   const [allshipmentsdata,setallshipmentsdata]=useState();
 
   useEffect(()=>{
-    const getcampaignsdata=getallshipments();
+    const getcampaignsdata=getAllShipment();
 
     return async()=>{
       const alldata=await getcampaignsdata;
@@ -44,39 +44,39 @@ export default function Home() {
     />
 
     <Table
-    setcreateshipmentmodel={setcreateshipmentmodel}
+    setcreateShipmentmodel={setcreateShipmentmodel}
     allshipmentsdata={allshipmentsdata}
     />
 
     <Form
-    createshipmentmodel={createshipmentmodel}
-    createshipment={createshipment}
-    setcreateshipmentmodel={setcreateshipmentmodel}
+    createShipmentmodel={createShipmentmodel}
+    createShipment={createShipment}
+    setcreateShipmentmodel={setcreateShipmentmodel}
     />
 
     <Profile
     openprofile={openprofile}
     setopenprofile={setopenprofile}
-    curruser={curruser}
-    getshipmentcount={getshipmentcount}
+    currentUser={currentUser}
+    getShipmentsCount={getShipmentsCount}
     />
 
     <Completeshipment
     completemodal={completemodal}
     setcompletemodal={setcompletemodal}
-    completeshipment={completeshipment}
+    completeShipment={completeShipment}
     />
 
     <Getshipment
     getmodal={getmodal}
     setgetmodal={setgetmodal}
-    getshipment={getshipment}
+    getShipment={getShipment}
     />
 
     <Startshipment
     startmodal={startmodal}
     setstartmodal={setstartmodal}
-    startshipment={startshipment}
+    startShipment={startShipment}
     />
     
     </>

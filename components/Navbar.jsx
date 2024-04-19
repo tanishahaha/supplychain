@@ -1,13 +1,13 @@
 "use client";
 import React from "react";
 import { useState,useEffect,useContext } from "react";
-import { Trackingcontext } from "@/context/Tracking";
+import { TrackingContext } from "@/context/Tracking";
 // import {FiOpen} from "react-icons";
 
 const Navbar=()=>{
 
   const [state,setstate]=useState(false);
-  const {curruser,connectwallet}=useContext(Trackingcontext);
+  const {currentUser,connectWallet}=useContext(TrackingContext);
 
   const navigation=[
     {title:"Home",path:"#"},
@@ -17,7 +17,7 @@ const Navbar=()=>{
   ];
 
   useEffect(()=>{
-    document.onclick=(e)=>{
+    document.onClick=(e)=>{
       const target=e.target;
       if(!target.closest(".menu-btn") ) setstate(false);
     };
@@ -33,7 +33,7 @@ const Navbar=()=>{
         <div className="flex items-center justify-between py-5 md:block">
           <h1 href="#" className="underline-none ">web3<span className="text-green-400">Galaxy</span></h1>
           <div className="md:hidden">
-            <button className="menu-btn text-gray-500 hover:text-gray-800" onclick={()=>setstate(!state)}>
+            <button className="menu-btn text-gray-500 hover:text-gray-800" onClick={()=>setstate(!state)}>
               {state? "this":"that"}
             </button>
 
@@ -59,10 +59,10 @@ const Navbar=()=>{
 
           <div className="flex-1 gap-x-6 items-center justify-end mt-6 space-y-6 md:flex md:space-y-0 md:mt-0">
             {
-              curruser?(
-                <p className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex">{curruser.slice(0,25)}</p>
+              currentUser?(
+                <p className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex">{currentUser.slice(0,25)}</p>
               ):(
-                <button onclick={()=>connectwallet()} className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex">
+                <button onClick={()=>connectWallet()} className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex">
                   Connect Wallet
                 </button>
               )
