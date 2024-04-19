@@ -1,6 +1,6 @@
 "use client"
 import React,{useState,useEffect} from "react";
-import { Web3Modal } from "@web3modal/ethers5";
+import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 
 import tracking from "../context/Tracking.json";
