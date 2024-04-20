@@ -2,3 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+/* body {
+    background: linear-gradient(to right, #000000, #1a202c); 
+    color: #ffffff; 
+    font-family: 'YourFont', sans-serif; 
+  } */
+
+  .gradient-form {
+ background: white;
+    padding: 20px; 
+    border-radius: 15px;
+    color: black;
+  }
+  

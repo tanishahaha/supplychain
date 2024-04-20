@@ -25,7 +25,7 @@ export default ({ setcreateShipmentmodel, allshipmentsdata }) => {
             onClick={() => setcreateShipmentmodel(true)}
             href="javascript:void(0)"
             className="inline-block px-4 py-2 text-white duration-150 font-medium
-          bg-gray-800 hover:bg-gray-700 active:bg-gray-900 md:text-sm rounded-lg
+          bg-green-600 hover:bg-gray-700 active:bg-gray-900 md:text-sm rounded-lg
           md:inline-flex">
             Add Tracking
           </button>
